@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Statistics from '../Statistics'
 import BarChartComponent from '../BarChart'
+import PieChart from '../PieChart'
 import './index.css'
 
 
@@ -54,8 +55,7 @@ const Transactions = () => {
 
     useEffect(()=>{
         const getTransactions = async ()=>{
-            const list = await axios.get(`https://vijay-roxiler-2024.onrender.com/transactions?month=${selectedMonth}&page=${page}&search=${searchInput}&perPage=10`)
-            // `https://roxiler-backend-alpha.vercel.app?page=${page}&perPage=10&search=${searchInput}&month=${selectedMonth}`
+            const list = await axios.get(`http://localhost:4005/transactions?month=${selectedMonth}&page=${page}&search=${searchInput}&perPage=10`)
             if(list){
                 console.log(list)
                 setTransactionList(list.data.transactions)
@@ -133,6 +133,7 @@ console.log(selectedMonth);
     </div>
     <Statistics selectedMonth={selectedMonth} />
     <BarChartComponent  selectedMonth={selectedMonth} />
+    <PieChart selectedMonth={selectedMonth}/>
     </>
 
 )

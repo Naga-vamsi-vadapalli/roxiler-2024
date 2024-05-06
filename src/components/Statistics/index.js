@@ -9,7 +9,7 @@ const {selectedMonth} = props
 
   useEffect(() => {
     const getStatistics = async ()=>{
-        const statistics = await axios.get(`https://vijay-roxiler-2024.onrender.com/statistics/?month=${selectedMonth}`)
+        const statistics = await axios.get(`http://localhost:4005/statistics/?month=${selectedMonth}`)
         
             setStatistics(statistics.data)
 
