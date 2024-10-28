@@ -47,7 +47,7 @@ async function initializeDBAndServer() {
 // Initialize the database and start the server
 initializeDBAndServer();
 
-// Fetch and Insert Seed Data into the Database
+// Fetch and Insert Seed Data into the Dat
 async function fetchAndInsert() {
     try {
         const response = await axios.get(

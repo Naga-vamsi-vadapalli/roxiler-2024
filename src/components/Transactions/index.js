@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Statistics from '../Statistics'
 import BarChartComponent from '../BarChart'
-import PieChart from '../PieChart'
+
 import './index.css'
 
 
@@ -80,7 +80,8 @@ console.log(selectedMonth);
             {months.map(o=> <option  className='selector-element' key={o.name} value={o.name}>{o.name}</option>)}
         </select>
     </div>
-        <table>
+    
+        <table className='round-table'>
             <thead>
             <tr>
                 <th>ID</th>
@@ -92,7 +93,7 @@ console.log(selectedMonth);
                 <th>Image</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody className='tbody'>
             {
                 transactionList.map((o)=>{
                     const {category,
@@ -111,7 +112,7 @@ console.log(selectedMonth);
                         <td>{price}</td>
                         <td>{category}</td>
                         <td>{sold}</td>
-                        <td><img height={'100px'} className='product-image'  src={image}/></td>
+                        <td><img alt='Loading..' height={'100px'} className='product-image'  src={image}/></td>
                     </tr>
                     )
                 })
@@ -120,7 +121,7 @@ console.log(selectedMonth);
         </table>
         <div className='last-container'>
             <p>Page No: {page}</p>
-            <p><span onClick={()=> setPage(prevValue=> prevValue+1)} className='next-button'>Next</span> - <span onClick={()=> setPage(prevValue=> prevValue>1? prevValue-1: prevValue)} className='previous-button'>Previous</span></p>
+            <p><span onClick={()=> setPage(prevValue=> prevValue>1? prevValue-1: prevValue)} className='previous-button'>Previous</span> - <span onClick={()=> setPage(prevValue=> prevValue+1)} className='next-button'>Next</span></p>
             <p>Per Page: 10</p>
         </div>
         <div className='statistics-container'>
@@ -133,7 +134,7 @@ console.log(selectedMonth);
     </div>
     <Statistics selectedMonth={selectedMonth} />
     <BarChartComponent  selectedMonth={selectedMonth} />
-    <PieChart selectedMonth={selectedMonth}/>
+  
     </>
 
 )
